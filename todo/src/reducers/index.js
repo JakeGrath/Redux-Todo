@@ -1,4 +1,4 @@
-import { ADD, TOGGLE } from "../actions"
+import { ADD, TOGGLE, CLEAR } from "../actions"
 
 const initialState = {
     todos: [
@@ -29,6 +29,10 @@ export const ToDoReducer = (state = initialState, action) => {
                         return todo;
                     })         
                 }
+        case CLEAR:
+            return {
+                todos: state.todos.filter(todo => todo.completed !== true)
+            }
         default:
             return state;
     }
